@@ -61,6 +61,10 @@ const loadPictures = function () {
     listItem.setAttribute("image-title", title);
     listItem.setAttribute("index", index);
 
+    if (title.length > 30) {
+      title = title.slice(0, 12) + "..." + title.slice(title.length - 12);
+    }
+
     listItem.innerHTML = `
       <div class='image-list_image'>
         <img src=${url}>

@@ -56,11 +56,7 @@ main {
 .image-list_title {
   flex-basis: 70%;
   margin: 0px 10px;
-  line-height: 60px;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden !important;
-  text-overflow: ellipsis;
+  line-height: 40px;
 }
 .active {
   background-color: #0a6ebd;
