@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  width: 60vw;
+  height: 90vh;
+  margin: auto;
+  border: 1px solid black;
+}
+
+#gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#select-box {
+  flex-basis: 30%;
+  border: 1px solid red;
+}
+
+#image-box {
+  flex-basis: 70%;
+  border: 1px solid green;
+}
