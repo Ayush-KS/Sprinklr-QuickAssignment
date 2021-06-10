@@ -73,7 +73,6 @@ loadPictures();
 const imageListItems = document.querySelectorAll(".image-list_item");
 
 imageListItems.forEach((item) => {
-  console.log(item);
   item.addEventListener("click", function () {
     removeActive();
     setImage(this);
