@@ -16,11 +16,45 @@ main {
 }
 
 #select-box {
-  flex-basis: 30%;
+  width: 30%;
   border: 1px solid red;
 }
 
 #image-box {
-  flex-basis: 70%;
+  width: 70%;
   border: 1px solid green;
+}
+
+#image-list {
+  width: 100%;
+}
+
+.image-list_item {
+  height: 40px;
+  width: 100%;
+  display: flex;
+}
+
+#image-list > * + * {
+  margin-top: 10px;
+}
+
+.image-list_image {
+  height: 40px;
+  width: 40px;
+}
+.image-list_image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.image-list_title {
+  flex-basis: 70%;
+  margin: 0px 10px;
+  line-height: 40px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
 }

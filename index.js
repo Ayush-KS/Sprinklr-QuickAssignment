@@ -37,14 +37,23 @@ const loadPictures = function () {
     const listItem = document.createElement("li");
     listItem.classList.add("image-list_item");
 
-    const previewImage = document.createElement("img");
-    const imageTitle = document.createElement("p");
+    listItem.innerHTML = `
+      <div class='image-list_image'>
+        <img src=${url}>
+      </div>
+      <div class='image-list_title'> ${title} </div>
+    `;
 
-    previewImage.setAttribute("src", url);
-    imageTitle.textContent = title;
+    // const previewImage = document.createElement("img");
+    // previewImage.classList.add("image-list_image");
+    // const imageTitle = document.createElement("p");
+    // imageTitle.classList.add("image-list_title");
 
-    listItem.append(previewImage);
-    listItem.append(imageTitle);
+    // previewImage.setAttribute("src", url);
+    // imageTitle.textContent = title;
+
+    // listItem.append(previewImage);
+    // listItem.append(imageTitle);
     imageList.append(listItem);
   });
   const imageContainer = document.createElement("img");
