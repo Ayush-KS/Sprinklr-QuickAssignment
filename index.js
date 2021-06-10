@@ -28,7 +28,7 @@ const setImage = function (listItem) {
 const loadPictures = function () {
   const imageList = document.querySelector("#image-list");
 
-  data.forEach(({ previewImage: url, title }, index) => {
+  images.forEach(({ previewImage: url, title }, index) => {
     const listItem = document.createElement("li");
 
     // Adding class, and custom attributes(url, title, index)
