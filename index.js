@@ -1,3 +1,4 @@
+// Pictures JSON
 const data = [
   {
     previewImage:
@@ -26,12 +27,19 @@ const data = [
   },
 ];
 
+/**
+ * @returns index of active list item
+ */
 const removeActive = function () {
   const activeItem = document.querySelector(".image-list_item.active");
   activeItem.classList.remove("active");
   return parseInt(activeItem.getAttribute("index"));
 };
 
+/**
+ * Sets image in the image box
+ * @param {node} listItem
+ */
 const setImage = function (listItem) {
   listItem.classList.add("active");
   const url = listItem.getAttribute("image-url");
@@ -43,6 +51,7 @@ const setImage = function (listItem) {
   imageTitleContainer.textContent = title;
 };
 
+// Loads thumbnails and details in the selection box
 const loadPictures = function () {
   const imageList = document.querySelector("#image-list");
   data.forEach(({ previewImage: url, title }, index) => {
@@ -72,6 +81,7 @@ loadPictures();
 
 const imageListItems = document.querySelectorAll(".image-list_item");
 
+// Adding event lister to each selection list item
 imageListItems.forEach((item) => {
   item.addEventListener("click", function () {
     removeActive();
@@ -79,6 +89,7 @@ imageListItems.forEach((item) => {
   });
 });
 
+// Adding event listener to enable keypress functionality
 document.addEventListener("keydown", (event) => {
   if (event.code == "ArrowDown") {
     let index = removeActive();

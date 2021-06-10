@@ -1,12 +1,13 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
 }
 
+/* Section Styles */
 main {
   width: 50vw;
-  height: 90vh;
+  height: 95vh;
   margin: auto;
-  /* border: 1px solid black; */
 }
 
 #gallery {
@@ -16,14 +17,13 @@ main {
 
 #select-box {
   width: 35%;
-  /* border: 1px solid red; */
 }
 
 #image-box {
   width: 65%;
-  /* border: 1px solid green; */
 }
 
+/* Selection List Styles */
 #image-list {
   margin: 0;
   margin-right: 10px;
@@ -62,7 +62,12 @@ main {
   overflow: hidden !important;
   text-overflow: ellipsis;
 }
+.active {
+  background-color: #0a6ebd;
+  color: white;
+}
 
+/* Image Box Styles */
 #image-box {
   height: 100%;
   display: flex;
@@ -85,11 +90,7 @@ main {
   font-size: 1.5rem;
 }
 
-.active {
-  background-color: #0a6ebd;
-  color: white;
-}
-
+/* Media Queries */
 @media (max-width: 1000px) {
   main {
     width: 70%;
