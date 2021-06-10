@@ -1,3 +1,4 @@
+// Importing Images
 import images from "./images.js";
 
 /**
