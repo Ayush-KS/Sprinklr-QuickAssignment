@@ -54,17 +54,22 @@ const setImage = function (listItem) {
 // Loads thumbnails and details in the selection box
 const loadPictures = function () {
   const imageList = document.querySelector("#image-list");
+
   data.forEach(({ previewImage: url, title }, index) => {
     const listItem = document.createElement("li");
+
+    // Adding class, and custom attributes(url, title, index)
     listItem.classList.add("image-list_item");
     listItem.setAttribute("image-url", url);
     listItem.setAttribute("image-title", title);
     listItem.setAttribute("index", index);
 
+    // Adding ellipsis for large titles
     if (title.length > 30) {
       title = title.slice(0, 12) + "..." + title.slice(title.length - 12);
     }
 
+    // Adding HTML for image and title
     listItem.innerHTML = `
       <div class='image-list_image'>
         <img src=${url}>
@@ -74,18 +79,20 @@ const loadPictures = function () {
 
     imageList.append(listItem);
   });
+
+  // Creating an image element and appending it to the image box
   const imageContainer = document.createElement("img");
   const imageBox = document.querySelector("#image-box_image");
   imageBox.append(imageContainer);
 
+  // Initially setting the very first image as the default active image
   setImage(document.querySelectorAll(".image-list_item")[0]);
 };
 
 loadPictures();
 
-const imageListItems = document.querySelectorAll(".image-list_item");
-
 // Adding event lister to each selection list item
+const imageListItems = document.querySelectorAll(".image-list_item");
 imageListItems.forEach((item) => {
   item.addEventListener("click", function () {
     removeActive();
