@@ -36,6 +36,7 @@ const loadPictures = function () {
   data.forEach(({ previewImage: url, title }) => {
     const listItem = document.createElement("li");
     listItem.classList.add("image-list_item");
+    listItem.setAttribute("image-url", url);
 
     listItem.innerHTML = `
       <div class='image-list_image'>
@@ -44,16 +45,6 @@ const loadPictures = function () {
       <div class='image-list_title'> ${title} </div>
     `;
 
-    // const previewImage = document.createElement("img");
-    // previewImage.classList.add("image-list_image");
-    // const imageTitle = document.createElement("p");
-    // imageTitle.classList.add("image-list_title");
-
-    // previewImage.setAttribute("src", url);
-    // imageTitle.textContent = title;
-
-    // listItem.append(previewImage);
-    // listItem.append(imageTitle);
     imageList.append(listItem);
   });
   const imageContainer = document.createElement("img");
@@ -70,7 +61,7 @@ const imageListItems = document.querySelectorAll(".image-list_item");
 console.log(imageListItems);
 
 imageListItems.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    console.log(event);
+  item.addEventListener("click", function () {
+    setImage(this.getAttribute("image-url"));
   });
 });
