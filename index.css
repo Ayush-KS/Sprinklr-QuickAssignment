@@ -3,7 +3,7 @@
 }
 
 main {
-  width: 60vw;
+  width: 50vw;
   height: 90vh;
   margin: auto;
   border: 1px solid black;
@@ -24,10 +24,6 @@ main {
 #image-box {
   width: 70%;
   border: 1px solid green;
-}
-
-#image-list {
-  width: 100%;
 }
 
 .image-list_item {
@@ -62,10 +58,27 @@ main {
 
 #image-box {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-#image-box img {
+#image-box_image {
+  height: 90%;
+}
+
+#image-box_image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+#image-box_title {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.active {
+  background-color: blue;
+  color: white;
 }

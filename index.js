@@ -26,17 +26,31 @@ const data = [
   },
 ];
 
-const setImage = function (url) {
-  const imageContainer = document.querySelector("#image-box img");
+const removeActive = function () {
+  const activeItem = document.querySelector(".image-list_item.active");
+  activeItem.classList.remove("active");
+  return parseInt(activeItem.getAttribute("index"));
+};
+
+const setImage = function (listItem) {
+  listItem.classList.add("active");
+  const url = listItem.getAttribute("image-url");
+  const title = listItem.getAttribute("image-title");
+
+  const imageContainer = document.querySelector("#image-box_image img");
+  const imageTitleContainer = document.querySelector("#image-box_title");
   imageContainer.setAttribute("src", url);
+  imageTitleContainer.textContent = title;
 };
 
 const loadPictures = function () {
   const imageList = document.querySelector("#image-list");
-  data.forEach(({ previewImage: url, title }) => {
+  data.forEach(({ previewImage: url, title }, index) => {
     const listItem = document.createElement("li");
     listItem.classList.add("image-list_item");
     listItem.setAttribute("image-url", url);
+    listItem.setAttribute("image-title", title);
+    listItem.setAttribute("index", index);
 
     listItem.innerHTML = `
       <div class='image-list_image'>
@@ -48,20 +62,34 @@ const loadPictures = function () {
     imageList.append(listItem);
   });
   const imageContainer = document.createElement("img");
-  const imageBox = document.querySelector("#image-box");
+  const imageBox = document.querySelector("#image-box_image");
   imageBox.append(imageContainer);
 
-  //setImage(data[0].previewImage);
+  setImage(document.querySelectorAll(".image-list_item")[0]);
 };
 
 loadPictures();
 
 const imageListItems = document.querySelectorAll(".image-list_item");
 
-console.log(imageListItems);
-
 imageListItems.forEach((item) => {
+  console.log(item);
   item.addEventListener("click", function () {
-    setImage(this.getAttribute("image-url"));
+    removeActive();
+    setImage(this);
   });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.code == "ArrowDown") {
+    let index = removeActive();
+    index = (index + 1) % imageListItems.length;
+
+    setImage(imageListItems[index]);
+  } else if (event.code == "ArrowUp") {
+    let index = removeActive();
+    index = (index - 1 + imageListItems.length) % imageListItems.length;
+
+    setImage(imageListItems[index]);
+  }
 });
