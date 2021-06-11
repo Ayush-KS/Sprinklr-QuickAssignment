@@ -37,14 +37,16 @@ const setTitles = function () {
 
     let sub = 3;
     while (textWidth > containerWidth) {
-      const newTitle =
-        title.slice(0, title.length - 5 - sub) +
-        "..." +
-        title.slice(title.length - 5);
+      const left = parseInt((sub + 1) / 2);
+      const right = parseInt(sub / 2);
+      const half = parseInt(title.length / 2);
+      const leftString = title.slice(0, half - left);
+      const rightString = title.slice(Math.min(title.length - 5, half + right));
+      const newTitle = leftString + "..." + rightString;
       titleContainer.textContent = newTitle;
       textWidth = titleContainer.scrollWidth;
       sub++;
-      if (sub == title.length - 5) break;
+      if (sub > half) break;
     }
   });
 };
