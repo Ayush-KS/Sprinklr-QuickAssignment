@@ -25,6 +25,30 @@ const setImage = function (listItem) {
   imageTitleContainer.textContent = title;
 };
 
+// Finds the most optimal placement of ellipsis such that filetype is always visible
+const setTitles = function () {
+  const imageList = document.querySelectorAll(".image-list_item");
+  imageList.forEach((listItem) => {
+    const titleContainer = listItem.querySelector(".image-list_title");
+    const title = listItem.getAttribute("image-title");
+    const containerWidth = titleContainer.clientWidth;
+    titleContainer.textContent = title;
+    let textWidth = titleContainer.scrollWidth;
+
+    let sub = 3;
+    while (textWidth > containerWidth) {
+      const newTitle =
+        title.slice(0, title.length - 5 - sub) +
+        "..." +
+        title.slice(title.length - 5);
+      titleContainer.textContent = newTitle;
+      textWidth = titleContainer.scrollWidth;
+      sub++;
+      if (sub == title.length - 5) break;
+    }
+  });
+};
+
 // Loads thumbnails and details in the selection box
 const loadPictures = function () {
   const imageList = document.querySelector("#image-list");
@@ -43,14 +67,14 @@ const loadPictures = function () {
       <div class='image-list_image'>
         <img src=${url}>
       </div>
-      <span class='image-list_title' data-content-start='${title.slice(
-        0,
-        title.length / 2
-      )}' data-content-end='${title.slice(title.length / 2)}'></span>
+      <div class='image-list_title'>
+      </div>
     `;
 
     imageList.append(listItem);
   });
+
+  setTitles();
 
   // Creating an image element and appending it to the image box
   const imageContainer = document.createElement("img");
@@ -63,7 +87,10 @@ const loadPictures = function () {
 
 loadPictures();
 
-// Adding event lister to each selection list item
+// Adding event listener to set ellipsis in titles as window resizes
+window.addEventListener("resize", setTitles);
+
+// Adding event listener to each selection list item
 const imageListItems = document.querySelectorAll(".image-list_item");
 imageListItems.forEach((item) => {
   item.addEventListener("click", function () {
