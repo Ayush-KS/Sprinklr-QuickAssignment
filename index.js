@@ -38,18 +38,18 @@ const loadPictures = function () {
     listItem.setAttribute("image-title", title);
     listItem.setAttribute("index", index);
 
-    // Adding ellipsis for large titles
-    if (title.length > 30) {
-      title = title.slice(0, 12) + "..." + title.slice(title.length - 12);
-    }
-
-    // Adding HTML for image and title
+    // Adding HTML for image and title (with ellipsis in case of large titles)
     listItem.innerHTML = `
       <div class='image-list_image'>
         <img src=${url}>
       </div>
-      <div class='image-list_title'> ${title} </div>
+      <span class='image-list_title' data-content-start='${title.slice(
+        0,
+        title.length / 2
+      )}' data-content-end='${title.slice(title.length / 2)}'></span>
     `;
+
+    console.log(listItem);
 
     imageList.append(listItem);
   });
