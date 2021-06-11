@@ -46,7 +46,7 @@ const setTitles = function () {
       titleContainer.textContent = newTitle;
       textWidth = titleContainer.scrollWidth;
       sub++;
-      if (sub > half) break;
+      if (left == half) break;
     }
   });
 };
