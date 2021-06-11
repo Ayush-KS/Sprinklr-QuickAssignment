@@ -49,8 +49,6 @@ const loadPictures = function () {
       )}' data-content-end='${title.slice(title.length / 2)}'></span>
     `;
 
-    console.log(listItem);
-
     imageList.append(listItem);
   });
 
