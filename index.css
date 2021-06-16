@@ -66,7 +66,7 @@ main {
   margin: 0px 10px;
   line-height: 40px;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .active {
